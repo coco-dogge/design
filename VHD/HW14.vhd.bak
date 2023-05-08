@@ -1,0 +1,62 @@
+library ieee;
+use ieee.std_logic_1164.all;
+use ieee.std_logic_unsigned.all;
+use ieee.std_logic_arith.all;
+use ieee.numeric_std.all;
+
+entity HW14 is
+	port(
+		CLK	:	in std_logic;
+		rst	:	in std_logic;
+		BCD	:	out std_logic_vector(7 downto 0);
+		BCD1	:	out std_logic_vector(7 downto 0);
+		BCD2	:	out std_logic_vector(7 downto 0);
+		BCD3	:	out std_logic_vector(7 downto 0)
+	);
+end HW14;
+architecture X of HW14 is
+
+type btn_ram is array(0 to 3)of integer(1 to 6);
+signal Q :btn_ram;
+
+signal clkA:std_logic_vector(3 downto 0);
+
+signal w :std_logic_vector(35 downto 0);
+
+type seg_rom is array(0 to 15)of std_logic_vector(6 downto 0);
+signal seg_num :seg_rom:=
+(
+	"1111110" ,"0110000" ,"1101101" ,"1111001" ,"0110011" ,"1011011" ,"0011111" ,"1110000" 
+	,"1111111" ,"1110011" ,"1110111" ,"0011111" ,"1001110" ,"0111101" ,"1001111" ,"0000000"
+);
+begin
+	
+
+
+process(CLK)
+begin
+	w <= w + '1';
+	clkA <= w(27 downto 25);
+end process;
+
+
+process (CLK)
+variable j:integer range 0 to 3;
+begin
+if(rst = '0')then
+	for j in 0 to 3 loop
+		if(rising_edge(clkA(j)))then
+			Q(j) <= Q(j) + 1;
+		end if;
+	end loop;
+				
+	
+end if;
+
+BCD <= not(seg_num(Q(0)) & '0');
+BCD1<= not(seg_num(Q(1)) & '0');
+BCD2<= not(seg_num(Q(2)) & '0');
+BCD3<= not(seg_num(Q(3)) & '0');
+end process;
+	
+end X;

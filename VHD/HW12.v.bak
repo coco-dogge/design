@@ -1,0 +1,27 @@
+
+module 
+(
+	input clk,
+	input rst,sw
+	output reg [7:0]led;
+);
+
+	reg c;
+
+	
+	always @ (posedge clk)
+	begin
+		if (rst == '0')
+			c<='0';
+			
+		if (c == 0)
+			led <= "10000000";
+		else
+			led <= led[6:0]:led[7];
+			
+		
+	end
+
+
+
+endmodule

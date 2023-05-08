@@ -1,0 +1,33 @@
+// Quartus II Verilog Template
+// One-bit wide, N-bit long shift register
+
+module mid
+(
+	input clk,
+	input [1:0]btn,
+	output reg [7:0]BCD[1:0]
+);
+
+	// Declare the shift register
+	reg [30:0] q;
+	reg clk_3;
+	reg [1:0]b;
+	reg [7:0]x; 
+
+	// Shift everything over, load the incoming bit
+	always @ (posedge clk)
+	begin
+		q <= q + 1;
+		if(btn != 0)
+			b<=btn;
+	end
+
+	// Catch the outgoing bit
+	always @ (posedge q[24])
+	begin
+		if(x)
+		case(b)
+			1:
+	end
+
+endmodule
