@@ -22,6 +22,9 @@ signal Q :btn_ram:=("0000","0000","0000","0000");
 
 signal clkA:std_logic;--_vector(3 downto 0)
 
+signal ram :std_logic_vector(3 downto 0);--
+signal flag,flagx :std_logic;
+
 signal w :std_logic_vector(35 downto 0);
 
 type seg_rom is array(0 to 15)of std_logic_vector(6 downto 0);
@@ -38,7 +41,7 @@ process(CLK)
 begin
 	if(rising_edge(CLK))then
 		w <= w + 1;
-		clkA <= w(24);-- downto 25
+		clkA <= w(20);-- downto 25
 	end if;
 	
 end process;
@@ -53,20 +56,30 @@ begin
 	if(rising_edge(clkA))then
 		if(sw /= "0000000000")then
 			case sw is
-				when "0000000001" => Q(0) <= "0000";
-				when "0000000010" => Q(0) <= "0001";
-				when "0000000100" => Q(0) <= "0010";
-				when "0000001000" => Q(0) <= "0011";
-				when "0000010000" => Q(0) <= "0100";
-				when "0000100000" => Q(0) <= "0101";
-				when "0001000000" => Q(0) <= "0110";
-				when "0010000000" => Q(0) <= "0111";
-				when "0100000000" => Q(0) <= "1000";
-				when "1000000000" => Q(0) <= "1001";
-				when others => Q(0) <= "1111";
+				when "0000000001" => ram <= "0000";
+				when "0000000010" => ram <= "0001";
+				when "0000000100" => ram <= "0010";
+				when "0000001000" => ram <= "0011";
+				when "0000010000" => ram <= "0100";
+				when "0000100000" => ram <= "0101";
+				when "0001000000" => ram <= "0110";
+				when "0010000000" => ram <= "0111";
+				when "0100000000" => ram <= "1000";
+				when "1000000000" => ram <= "1001";
+				when others => ram <= "1111";
 			end case;
-			Q(1 to 3) <= Q(0 to 2);
-	end if;
+			
+			flag <= '1';flagx<='0';
+		else
+			flag <= '0';
+		end if;
+		
+		if ((flag = '0') and (flagx = '0'))then
+			Q(3) <= ram;
+			Q(0 to 2) <= Q(1 to 3);
+			flagx <= '1';
+		end if;
+		
 	end if;
 				
 	

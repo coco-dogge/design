@@ -1,5 +1,5 @@
 Analysis & Synthesis report for t0302
-Thu May 18 09:53:04 2023
+Thu May 18 10:32:59 2023
 Quartus II 64-Bit Version 14.1.0 Build 186 12/03/2014 SJ Web Edition
 
 
@@ -45,15 +45,15 @@ agreement for further details.
 +---------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                    ;
 +------------------------------------+--------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Thu May 18 09:53:04 2023      ;
+; Analysis & Synthesis Status        ; Successful - Thu May 18 10:32:59 2023      ;
 ; Quartus II 64-Bit Version          ; 14.1.0 Build 186 12/03/2014 SJ Web Edition ;
 ; Revision Name                      ; t0302                                      ;
 ; Top-level Entity Name              ; HW17                                       ;
 ; Family                             ; Cyclone IV E                               ;
-; Total logic elements               ; 90                                         ;
-;     Total combinational functions  ; 77                                         ;
-;     Dedicated logic registers      ; 42                                         ;
-; Total registers                    ; 42                                         ;
+; Total logic elements               ; 92                                         ;
+;     Total combinational functions  ; 75                                         ;
+;     Dedicated logic registers      ; 44                                         ;
+; Total registers                    ; 44                                         ;
 ; Total pins                         ; 44                                         ;
 ; Total virtual pins                 ; 0                                          ;
 ; Total memory bits                  ; 0                                          ;
@@ -175,36 +175,36 @@ agreement for further details.
 +----------------------------------+-----------------+-----------------+--------------------------------------------------+---------+
 
 
-+---------------------------------------------------------+
-; Analysis & Synthesis Resource Usage Summary             ;
-+---------------------------------------------+-----------+
-; Resource                                    ; Usage     ;
-+---------------------------------------------+-----------+
-; Estimated Total logic elements              ; 90        ;
-;                                             ;           ;
-; Total combinational functions               ; 77        ;
-; Logic element usage by number of LUT inputs ;           ;
-;     -- 4 input functions                    ; 47        ;
-;     -- 3 input functions                    ; 4         ;
-;     -- <=2 input functions                  ; 26        ;
-;                                             ;           ;
-; Logic elements by mode                      ;           ;
-;     -- normal mode                          ; 54        ;
-;     -- arithmetic mode                      ; 23        ;
-;                                             ;           ;
-; Total registers                             ; 42        ;
-;     -- Dedicated logic registers            ; 42        ;
-;     -- I/O registers                        ; 0         ;
-;                                             ;           ;
-; I/O pins                                    ; 44        ;
-;                                             ;           ;
-; Embedded Multiplier 9-bit elements          ; 0         ;
-;                                             ;           ;
-; Maximum fan-out node                        ; CLK~input ;
-; Maximum fan-out                             ; 26        ;
-; Total fan-out                               ; 422       ;
-; Average fan-out                             ; 2.04      ;
-+---------------------------------------------+-----------+
++-----------------------------------------------------+
+; Analysis & Synthesis Resource Usage Summary         ;
++---------------------------------------------+-------+
+; Resource                                    ; Usage ;
++---------------------------------------------+-------+
+; Estimated Total logic elements              ; 92    ;
+;                                             ;       ;
+; Total combinational functions               ; 75    ;
+; Logic element usage by number of LUT inputs ;       ;
+;     -- 4 input functions                    ; 46    ;
+;     -- 3 input functions                    ; 6     ;
+;     -- <=2 input functions                  ; 23    ;
+;                                             ;       ;
+; Logic elements by mode                      ;       ;
+;     -- normal mode                          ; 56    ;
+;     -- arithmetic mode                      ; 19    ;
+;                                             ;       ;
+; Total registers                             ; 44    ;
+;     -- Dedicated logic registers            ; 44    ;
+;     -- I/O registers                        ; 0     ;
+;                                             ;       ;
+; I/O pins                                    ; 44    ;
+;                                             ;       ;
+; Embedded Multiplier 9-bit elements          ; 0     ;
+;                                             ;       ;
+; Maximum fan-out node                        ; clkA  ;
+; Maximum fan-out                             ; 22    ;
+; Total fan-out                               ; 426   ;
+; Average fan-out                             ; 2.06  ;
++---------------------------------------------+-------+
 
 
 +-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -212,7 +212,7 @@ agreement for further details.
 +----------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+---------------------+--------------+
 ; Compilation Hierarchy Node ; LC Combinationals ; LC Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name ; Library Name ;
 +----------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+---------------------+--------------+
-; |HW17                      ; 77 (77)           ; 42 (42)      ; 0           ; 0            ; 0       ; 0         ; 44   ; 0            ; |HW17               ; work         ;
+; |HW17                      ; 75 (75)           ; 44 (44)      ; 0           ; 0            ; 0       ; 0         ; 44   ; 0            ; |HW17               ; work         ;
 +----------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+---------------------+--------------+
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
 
@@ -222,8 +222,8 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +----------------------------------------+--------------------+
 ; Register name                          ; Reason for Removal ;
 +----------------------------------------+--------------------+
-; w[25..35]                              ; Lost fanout        ;
-; Total Number of Removed Registers = 11 ;                    ;
+; w[21..35]                              ; Lost fanout        ;
+; Total Number of Removed Registers = 15 ;                    ;
 +----------------------------------------+--------------------+
 
 
@@ -232,12 +232,12 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +----------------------------------------------+-------+
 ; Statistic                                    ; Value ;
 +----------------------------------------------+-------+
-; Total registers                              ; 42    ;
+; Total registers                              ; 44    ;
 ; Number of registers using Synchronous Clear  ; 0     ;
 ; Number of registers using Synchronous Load   ; 0     ;
 ; Number of registers using Asynchronous Clear ; 0     ;
 ; Number of registers using Asynchronous Load  ; 0     ;
-; Number of registers using Clock Enable       ; 16    ;
+; Number of registers using Clock Enable       ; 20    ;
 ; Number of registers using Preset             ; 0     ;
 +----------------------------------------------+-------+
 
@@ -248,22 +248,22 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 ; Type                  ; Count                       ;
 +-----------------------+-----------------------------+
 ; boundary_port         ; 44                          ;
-; cycloneiii_ff         ; 42                          ;
-;     ENA               ; 16                          ;
-;     plain             ; 26                          ;
-; cycloneiii_lcell_comb ; 82                          ;
-;     arith             ; 23                          ;
-;         2 data inputs ; 22                          ;
+; cycloneiii_ff         ; 44                          ;
+;     ENA               ; 20                          ;
+;     plain             ; 24                          ;
+; cycloneiii_lcell_comb ; 80                          ;
+;     arith             ; 19                          ;
+;         2 data inputs ; 18                          ;
 ;         3 data inputs ; 1                           ;
-;     normal            ; 59                          ;
+;     normal            ; 61                          ;
 ;         0 data inputs ; 1                           ;
 ;         1 data inputs ; 6                           ;
-;         2 data inputs ; 2                           ;
-;         3 data inputs ; 3                           ;
-;         4 data inputs ; 47                          ;
+;         2 data inputs ; 3                           ;
+;         3 data inputs ; 5                           ;
+;         4 data inputs ; 46                          ;
 ;                       ;                             ;
-; Max LUT depth         ; 6.00                        ;
-; Average LUT depth     ; 2.69                        ;
+; Max LUT depth         ; 8.00                        ;
+; Average LUT depth     ; 2.95                        ;
 +-----------------------+-----------------------------+
 
 
@@ -282,7 +282,7 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 Info: *******************************************************************
 Info: Running Quartus II 64-Bit Analysis & Synthesis
     Info: Version 14.1.0 Build 186 12/03/2014 SJ Web Edition
-    Info: Processing started: Thu May 18 09:52:56 2023
+    Info: Processing started: Thu May 18 10:32:52 2023
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off t0302 -c t0302
 Info (20030): Parallel compilation is enabled and will use 6 of the 6 processors detected
 Info (12021): Found 1 design units, including 1 entities, in source file hw18.v
@@ -324,28 +324,28 @@ Info (12021): Found 2 design units, including 1 entities, in source file hw13.vh
 Info (12021): Found 1 design units, including 1 entities, in source file mid.v
     Info (12023): Found entity 1: mid
 Info (12127): Elaborating entity "HW17" for the top level hierarchy
-Warning (10540): VHDL Signal Declaration warning at HW17.vhd(28): used explicit default value for signal "seg_num" because signal was never assigned a value
-Warning (10492): VHDL Process Statement warning at HW17.vhd(53): signal "clkA" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10540): VHDL Signal Declaration warning at HW17.vhd(31): used explicit default value for signal "seg_num" because signal was never assigned a value
+Warning (10492): VHDL Process Statement warning at HW17.vhd(56): signal "clkA" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
 Warning (13024): Output pins are stuck at VCC or GND
     Warning (13410): Pin "BCD[0]" is stuck at VCC
     Warning (13410): Pin "BCD1[0]" is stuck at VCC
     Warning (13410): Pin "BCD2[0]" is stuck at VCC
     Warning (13410): Pin "BCD3[0]" is stuck at VCC
 Info (286030): Timing-Driven Synthesis is running
-Info (17049): 11 registers lost all their fanouts during netlist optimizations.
+Info (17049): 15 registers lost all their fanouts during netlist optimizations.
 Info (144001): Generated suppressed messages file C:/Users/user/Desktop/design/disign/VHD/t0302.map.smsg
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
 Warning (21074): Design contains 1 input pin(s) that do not drive logic
     Warning (15610): No output dependent on input pin "rst"
-Info (21057): Implemented 135 device resources after synthesis - the final resource count might be different
+Info (21057): Implemented 138 device resources after synthesis - the final resource count might be different
     Info (21058): Implemented 12 input pins
     Info (21059): Implemented 32 output pins
-    Info (21061): Implemented 91 logic cells
+    Info (21061): Implemented 94 logic cells
 Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 9 warnings
     Info: Peak virtual memory: 4828 megabytes
-    Info: Processing ended: Thu May 18 09:53:04 2023
-    Info: Elapsed time: 00:00:08
+    Info: Processing ended: Thu May 18 10:32:59 2023
+    Info: Elapsed time: 00:00:07
     Info: Total CPU time (on all processors): 00:00:16
 
 

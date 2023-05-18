@@ -4,7 +4,7 @@ JedecChain;
 	DefaultMfr(6E);
 
 	P ActionCode(Cfg)
-		Device PartName(EP4CE115F29) Path("F:/design_practice/VHD/") File("t0302.sof") MfrSpec(OpMask(1));
+		Device PartName(EP4CE115F29) Path("C:/Users/user/Desktop/design/disign/VHD/") File("t0302.sof") MfrSpec(OpMask(1));
 
 ChainEnd;
 
