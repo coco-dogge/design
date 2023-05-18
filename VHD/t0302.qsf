@@ -38,7 +38,7 @@
 
 set_global_assignment -name FAMILY "Cyclone IV E"
 set_global_assignment -name DEVICE EP4CE115F29C7
-set_global_assignment -name TOP_LEVEL_ENTITY HW17
+set_global_assignment -name TOP_LEVEL_ENTITY HW18
 set_global_assignment -name ORIGINAL_QUARTUS_VERSION "9.1 SP2"
 set_global_assignment -name PROJECT_CREATION_TIME_DATE "09:36:46  MARCH 02, 2023"
 set_global_assignment -name LAST_QUARTUS_VERSION 14.1.0
@@ -112,11 +112,6 @@ set_global_assignment -name VERILOG_FILE clkmake.v
 set_global_assignment -name VERILOG_FILE HW12.v
 set_global_assignment -name VHDL_FILE HW13.vhd
 set_global_assignment -name VERILOG_FILE mid.v
-set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
-set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
-set_global_assignment -name LL_ROOT_REGION ON -section_id "Root Region"
-set_global_assignment -name LL_MEMBER_STATE LOCKED -section_id "Root Region"
-set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_ROUTING -section_id Top
 set_location_assignment PIN_AB28 -to sw[0]
 set_location_assignment PIN_AB25 -to sw[9]
 set_location_assignment PIN_AC25 -to sw[8]
@@ -127,4 +122,9 @@ set_location_assignment PIN_AB27 -to sw[4]
 set_location_assignment PIN_AD27 -to sw[3]
 set_location_assignment PIN_AC27 -to sw[2]
 set_location_assignment PIN_AC28 -to sw[1]
+set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
+set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
+set_global_assignment -name LL_ROOT_REGION ON -section_id "Root Region"
+set_global_assignment -name LL_MEMBER_STATE LOCKED -section_id "Root Region"
+set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_ROUTING -section_id Top
 set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top

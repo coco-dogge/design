@@ -1,0 +1,6 @@
+
+State Machine - |HW18|btnr
+Name btnr.00 btnr.10 btnr.01 
+btnr.00 0 0 0 
+btnr.01 1 0 1 
+btnr.10 1 1 0 

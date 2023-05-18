@@ -1,5 +1,5 @@
 Analysis & Synthesis report for t0302
-Thu May 18 10:32:59 2023
+Thu May 18 11:46:55 2023
 Quartus II 64-Bit Version 14.1.0 Build 186 12/03/2014 SJ Web Edition
 
 
@@ -15,10 +15,13 @@ Quartus II 64-Bit Version 14.1.0 Build 186 12/03/2014 SJ Web Edition
   7. Analysis & Synthesis Resource Utilization by Entity
   8. Registers Removed During Synthesis
   9. General Register Statistics
- 10. Post-Synthesis Netlist Statistics for Top Partition
- 11. Elapsed Time Per Partition
- 12. Analysis & Synthesis Messages
- 13. Analysis & Synthesis Suppressed Messages
+ 10. Multiplexer Restructuring Statistics (Restructuring Performed)
+ 11. Parameter Settings for Inferred Entity Instance: lpm_divide:Mod1
+ 12. Parameter Settings for Inferred Entity Instance: lpm_divide:Div0
+ 13. Parameter Settings for Inferred Entity Instance: lpm_divide:Mod0
+ 14. Post-Synthesis Netlist Statistics for Top Partition
+ 15. Elapsed Time Per Partition
+ 16. Analysis & Synthesis Messages
 
 
 
@@ -45,16 +48,16 @@ agreement for further details.
 +---------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                    ;
 +------------------------------------+--------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Thu May 18 10:32:59 2023      ;
+; Analysis & Synthesis Status        ; Successful - Thu May 18 11:46:55 2023      ;
 ; Quartus II 64-Bit Version          ; 14.1.0 Build 186 12/03/2014 SJ Web Edition ;
 ; Revision Name                      ; t0302                                      ;
-; Top-level Entity Name              ; HW17                                       ;
+; Top-level Entity Name              ; HW18                                       ;
 ; Family                             ; Cyclone IV E                               ;
-; Total logic elements               ; 92                                         ;
-;     Total combinational functions  ; 75                                         ;
-;     Dedicated logic registers      ; 44                                         ;
-; Total registers                    ; 44                                         ;
-; Total pins                         ; 44                                         ;
+; Total logic elements               ; 1,648                                      ;
+;     Total combinational functions  ; 1,648                                      ;
+;     Dedicated logic registers      ; 89                                         ;
+; Total registers                    ; 89                                         ;
+; Total pins                         ; 37                                         ;
 ; Total virtual pins                 ; 0                                          ;
 ; Total memory bits                  ; 0                                          ;
 ; Embedded Multiplier 9-bit elements ; 0                                          ;
@@ -68,7 +71,7 @@ agreement for further details.
 ; Option                                                                     ; Setting            ; Default Value      ;
 +----------------------------------------------------------------------------+--------------------+--------------------+
 ; Device                                                                     ; EP4CE115F29C7      ;                    ;
-; Top-level entity name                                                      ; HW17               ; t0302              ;
+; Top-level entity name                                                      ; HW18               ; t0302              ;
 ; Family name                                                                ; Cyclone IV E       ; Cyclone IV GX      ;
 ; Use smart compilation                                                      ; Off                ; Off                ;
 ; Enable parallel Assembler and TimeQuest Timing Analyzer during compilation ; On                 ; On                 ;
@@ -158,21 +161,33 @@ agreement for further details.
 ; Maximum allowed            ; 6           ;
 ;                            ;             ;
 ; Average used               ; 1.00        ;
-; Maximum used               ; 1           ;
+; Maximum used               ; 6           ;
 ;                            ;             ;
 ; Usage by Processor         ; % Time Used ;
 ;     Processor 1            ; 100.0%      ;
-;     Processors 2-6         ;   0.0%      ;
+;     Processors 2-6         ; < 0.1%      ;
 +----------------------------+-------------+
 
 
-+-----------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Source Files Read                                                                                            ;
-+----------------------------------+-----------------+-----------------+--------------------------------------------------+---------+
-; File Name with User-Entered Path ; Used in Netlist ; File Type       ; File Name with Absolute Path                     ; Library ;
-+----------------------------------+-----------------+-----------------+--------------------------------------------------+---------+
-; HW17.vhd                         ; yes             ; User VHDL File  ; C:/Users/user/Desktop/design/disign/VHD/HW17.vhd ;         ;
-+----------------------------------+-----------------+-----------------+--------------------------------------------------+---------+
++------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                                           ;
++----------------------------------+-----------------+------------------------------+--------------------------------------------------------------------+---------+
+; File Name with User-Entered Path ; Used in Netlist ; File Type                    ; File Name with Absolute Path                                       ; Library ;
++----------------------------------+-----------------+------------------------------+--------------------------------------------------------------------+---------+
+; HW18.v                           ; yes             ; User Verilog HDL File        ; C:/Users/user/Desktop/design/disign/VHD/HW18.v                     ;         ;
+; lpm_divide.tdf                   ; yes             ; Megafunction                 ; c:/altera/14.1/quartus/libraries/megafunctions/lpm_divide.tdf      ;         ;
+; abs_divider.inc                  ; yes             ; Megafunction                 ; c:/altera/14.1/quartus/libraries/megafunctions/abs_divider.inc     ;         ;
+; sign_div_unsign.inc              ; yes             ; Megafunction                 ; c:/altera/14.1/quartus/libraries/megafunctions/sign_div_unsign.inc ;         ;
+; aglobal141.inc                   ; yes             ; Megafunction                 ; c:/altera/14.1/quartus/libraries/megafunctions/aglobal141.inc      ;         ;
+; db/lpm_divide_soo.tdf            ; yes             ; Auto-Generated Megafunction  ; C:/Users/user/Desktop/design/disign/VHD/db/lpm_divide_soo.tdf      ;         ;
+; db/abs_divider_kbg.tdf           ; yes             ; Auto-Generated Megafunction  ; C:/Users/user/Desktop/design/disign/VHD/db/abs_divider_kbg.tdf     ;         ;
+; db/alt_u_div_67f.tdf             ; yes             ; Auto-Generated Megafunction  ; C:/Users/user/Desktop/design/disign/VHD/db/alt_u_div_67f.tdf       ;         ;
+; db/add_sub_7pc.tdf               ; yes             ; Auto-Generated Megafunction  ; C:/Users/user/Desktop/design/disign/VHD/db/add_sub_7pc.tdf         ;         ;
+; db/add_sub_8pc.tdf               ; yes             ; Auto-Generated Megafunction  ; C:/Users/user/Desktop/design/disign/VHD/db/add_sub_8pc.tdf         ;         ;
+; db/lpm_abs_2v9.tdf               ; yes             ; Auto-Generated Megafunction  ; C:/Users/user/Desktop/design/disign/VHD/db/lpm_abs_2v9.tdf         ;         ;
+; db/lpm_abs_i0a.tdf               ; yes             ; Auto-Generated Megafunction  ; C:/Users/user/Desktop/design/disign/VHD/db/lpm_abs_i0a.tdf         ;         ;
+; db/lpm_divide_p0p.tdf            ; yes             ; Auto-Generated Megafunction  ; C:/Users/user/Desktop/design/disign/VHD/db/lpm_divide_p0p.tdf      ;         ;
++----------------------------------+-----------------+------------------------------+--------------------------------------------------------------------+---------+
 
 
 +-----------------------------------------------------+
@@ -180,51 +195,84 @@ agreement for further details.
 +---------------------------------------------+-------+
 ; Resource                                    ; Usage ;
 +---------------------------------------------+-------+
-; Estimated Total logic elements              ; 92    ;
+; Estimated Total logic elements              ; 1,648 ;
 ;                                             ;       ;
-; Total combinational functions               ; 75    ;
+; Total combinational functions               ; 1648  ;
 ; Logic element usage by number of LUT inputs ;       ;
-;     -- 4 input functions                    ; 46    ;
-;     -- 3 input functions                    ; 6     ;
-;     -- <=2 input functions                  ; 23    ;
+;     -- 4 input functions                    ; 483   ;
+;     -- 3 input functions                    ; 460   ;
+;     -- <=2 input functions                  ; 705   ;
 ;                                             ;       ;
 ; Logic elements by mode                      ;       ;
-;     -- normal mode                          ; 56    ;
-;     -- arithmetic mode                      ; 19    ;
+;     -- normal mode                          ; 1096  ;
+;     -- arithmetic mode                      ; 552   ;
 ;                                             ;       ;
-; Total registers                             ; 44    ;
-;     -- Dedicated logic registers            ; 44    ;
+; Total registers                             ; 89    ;
+;     -- Dedicated logic registers            ; 89    ;
 ;     -- I/O registers                        ; 0     ;
 ;                                             ;       ;
-; I/O pins                                    ; 44    ;
+; I/O pins                                    ; 37    ;
 ;                                             ;       ;
 ; Embedded Multiplier 9-bit elements          ; 0     ;
 ;                                             ;       ;
-; Maximum fan-out node                        ; clkA  ;
-; Maximum fan-out                             ; 22    ;
-; Total fan-out                               ; 426   ;
-; Average fan-out                             ; 2.06  ;
+; Maximum fan-out node                        ; x[31] ;
+; Maximum fan-out                             ; 149   ;
+; Total fan-out                               ; 4822  ;
+; Average fan-out                             ; 2.66  ;
 +---------------------------------------------+-------+
 
 
-+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Resource Utilization by Entity                                                                                                                         ;
-+----------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+---------------------+--------------+
-; Compilation Hierarchy Node ; LC Combinationals ; LC Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name ; Library Name ;
-+----------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+---------------------+--------------+
-; |HW17                      ; 75 (75)           ; 44 (44)      ; 0           ; 0            ; 0       ; 0         ; 44   ; 0            ; |HW17               ; work         ;
-+----------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+---------------------+--------------+
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                                                                                   ;
++---------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+----------------------------------------------------------------------------------------------------+--------------+
+; Compilation Hierarchy Node            ; LC Combinationals ; LC Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name                                                                                ; Library Name ;
++---------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+----------------------------------------------------------------------------------------------------+--------------+
+; |HW18                                 ; 1648 (157)        ; 89 (89)      ; 0           ; 0            ; 0       ; 0         ; 37   ; 0            ; |HW18                                                                                              ; work         ;
+;    |lpm_divide:Div0|                  ; 484 (0)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |HW18|lpm_divide:Div0                                                                              ; work         ;
+;       |lpm_divide_p0p:auto_generated| ; 484 (0)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |HW18|lpm_divide:Div0|lpm_divide_p0p:auto_generated                                                ; work         ;
+;          |abs_divider_kbg:divider|    ; 484 (32)          ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |HW18|lpm_divide:Div0|lpm_divide_p0p:auto_generated|abs_divider_kbg:divider                        ; work         ;
+;             |alt_u_div_67f:divider|   ; 449 (449)         ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |HW18|lpm_divide:Div0|lpm_divide_p0p:auto_generated|abs_divider_kbg:divider|alt_u_div_67f:divider  ; work         ;
+;             |lpm_abs_i0a:my_abs_num|  ; 3 (3)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |HW18|lpm_divide:Div0|lpm_divide_p0p:auto_generated|abs_divider_kbg:divider|lpm_abs_i0a:my_abs_num ; work         ;
+;    |lpm_divide:Mod0|                  ; 503 (0)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |HW18|lpm_divide:Mod0                                                                              ; work         ;
+;       |lpm_divide_soo:auto_generated| ; 503 (0)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |HW18|lpm_divide:Mod0|lpm_divide_soo:auto_generated                                                ; work         ;
+;          |abs_divider_kbg:divider|    ; 503 (8)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |HW18|lpm_divide:Mod0|lpm_divide_soo:auto_generated|abs_divider_kbg:divider                        ; work         ;
+;             |alt_u_div_67f:divider|   ; 444 (444)         ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |HW18|lpm_divide:Mod0|lpm_divide_soo:auto_generated|abs_divider_kbg:divider|alt_u_div_67f:divider  ; work         ;
+;             |lpm_abs_i0a:my_abs_num|  ; 51 (51)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |HW18|lpm_divide:Mod0|lpm_divide_soo:auto_generated|abs_divider_kbg:divider|lpm_abs_i0a:my_abs_num ; work         ;
+;    |lpm_divide:Mod1|                  ; 504 (0)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |HW18|lpm_divide:Mod1                                                                              ; work         ;
+;       |lpm_divide_soo:auto_generated| ; 504 (0)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |HW18|lpm_divide:Mod1|lpm_divide_soo:auto_generated                                                ; work         ;
+;          |abs_divider_kbg:divider|    ; 504 (8)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |HW18|lpm_divide:Mod1|lpm_divide_soo:auto_generated|abs_divider_kbg:divider                        ; work         ;
+;             |alt_u_div_67f:divider|   ; 457 (457)         ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |HW18|lpm_divide:Mod1|lpm_divide_soo:auto_generated|abs_divider_kbg:divider|alt_u_div_67f:divider  ; work         ;
+;             |lpm_abs_i0a:my_abs_num|  ; 39 (39)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |HW18|lpm_divide:Mod1|lpm_divide_soo:auto_generated|abs_divider_kbg:divider|lpm_abs_i0a:my_abs_num ; work         ;
++---------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+----------------------------------------------------------------------------------------------------+--------------+
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
 
 
-+-------------------------------------------------------------+
-; Registers Removed During Synthesis                          ;
-+----------------------------------------+--------------------+
-; Register name                          ; Reason for Removal ;
-+----------------------------------------+--------------------+
-; w[21..35]                              ; Lost fanout        ;
-; Total Number of Removed Registers = 15 ;                    ;
-+----------------------------------------+--------------------+
++---------------------------------------------------------------------------------+
+; Registers Removed During Synthesis                                              ;
++----------------------------------------+----------------------------------------+
+; Register name                          ; Reason for Removal                     ;
++----------------------------------------+----------------------------------------+
+; BCD3[0]~reg0                           ; Stuck at VCC due to stuck port data_in ;
+; BCD3[1]~reg0                           ; Stuck at GND due to stuck port data_in ;
+; BCD3[2]~reg0                           ; Stuck at GND due to stuck port data_in ;
+; BCD3[3]~reg0                           ; Stuck at VCC due to stuck port data_in ;
+; BCD3[4]~reg0                           ; Stuck at VCC due to stuck port data_in ;
+; BCD3[5]~reg0                           ; Stuck at GND due to stuck port data_in ;
+; BCD3[6]~reg0                           ; Stuck at GND due to stuck port data_in ;
+; BCD3[7]~reg0                           ; Stuck at VCC due to stuck port data_in ;
+; BCD2[0]~reg0                           ; Stuck at VCC due to stuck port data_in ;
+; BCD2[1]~reg0                           ; Stuck at GND due to stuck port data_in ;
+; BCD2[2]~reg0                           ; Stuck at VCC due to stuck port data_in ;
+; BCD2[3]~reg0                           ; Stuck at VCC due to stuck port data_in ;
+; BCD2[4]~reg0                           ; Stuck at GND due to stuck port data_in ;
+; BCD2[5]~reg0                           ; Stuck at GND due to stuck port data_in ;
+; BCD2[6]~reg0                           ; Stuck at GND due to stuck port data_in ;
+; BCD2[7]~reg0                           ; Stuck at GND due to stuck port data_in ;
+; BCD[0]~reg0                            ; Stuck at VCC due to stuck port data_in ;
+; BCD1[0]~reg0                           ; Stuck at VCC due to stuck port data_in ;
+; q[24..30]                              ; Lost fanout                            ;
+; Total Number of Removed Registers = 25 ;                                        ;
++----------------------------------------+----------------------------------------+
 
 
 +------------------------------------------------------+
@@ -232,14 +280,93 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +----------------------------------------------+-------+
 ; Statistic                                    ; Value ;
 +----------------------------------------------+-------+
-; Total registers                              ; 44    ;
-; Number of registers using Synchronous Clear  ; 0     ;
+; Total registers                              ; 89    ;
+; Number of registers using Synchronous Clear  ; 10    ;
 ; Number of registers using Synchronous Load   ; 0     ;
 ; Number of registers using Asynchronous Clear ; 0     ;
 ; Number of registers using Asynchronous Load  ; 0     ;
-; Number of registers using Clock Enable       ; 20    ;
+; Number of registers using Clock Enable       ; 42    ;
 ; Number of registers using Preset             ; 0     ;
 +----------------------------------------------+-------+
+
+
++------------------------------------------------------------------------------------------------------------------------------------------+
+; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                           ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------+
+; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------+
+; 3:1                ; 10 bits   ; 20 LEs        ; 10 LEs               ; 10 LEs                 ; Yes        ; |HW18|t[7]                 ;
+; 21:1               ; 32 bits   ; 448 LEs       ; 64 LEs               ; 384 LEs                ; Yes        ; |HW18|x[31]                ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------+
+
+
++------------------------------------------------------------------+
+; Parameter Settings for Inferred Entity Instance: lpm_divide:Mod1 ;
++------------------------+----------------+------------------------+
+; Parameter Name         ; Value          ; Type                   ;
++------------------------+----------------+------------------------+
+; LPM_WIDTHN             ; 32             ; Untyped                ;
+; LPM_WIDTHD             ; 5              ; Untyped                ;
+; LPM_NREPRESENTATION    ; SIGNED         ; Untyped                ;
+; LPM_DREPRESENTATION    ; SIGNED         ; Untyped                ;
+; LPM_PIPELINE           ; 0              ; Untyped                ;
+; LPM_REMAINDERPOSITIVE  ; FALSE          ; Untyped                ;
+; MAXIMIZE_SPEED         ; 5              ; Untyped                ;
+; CBXI_PARAMETER         ; lpm_divide_soo ; Untyped                ;
+; CARRY_CHAIN            ; MANUAL         ; Untyped                ;
+; OPTIMIZE_FOR_SPEED     ; 5              ; Untyped                ;
+; AUTO_CARRY_CHAINS      ; ON             ; AUTO_CARRY             ;
+; IGNORE_CARRY_BUFFERS   ; OFF            ; IGNORE_CARRY           ;
+; AUTO_CASCADE_CHAINS    ; ON             ; AUTO_CASCADE           ;
+; IGNORE_CASCADE_BUFFERS ; OFF            ; IGNORE_CASCADE         ;
++------------------------+----------------+------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++------------------------------------------------------------------+
+; Parameter Settings for Inferred Entity Instance: lpm_divide:Div0 ;
++------------------------+----------------+------------------------+
+; Parameter Name         ; Value          ; Type                   ;
++------------------------+----------------+------------------------+
+; LPM_WIDTHN             ; 32             ; Untyped                ;
+; LPM_WIDTHD             ; 5              ; Untyped                ;
+; LPM_NREPRESENTATION    ; SIGNED         ; Untyped                ;
+; LPM_DREPRESENTATION    ; SIGNED         ; Untyped                ;
+; LPM_PIPELINE           ; 0              ; Untyped                ;
+; LPM_REMAINDERPOSITIVE  ; FALSE          ; Untyped                ;
+; MAXIMIZE_SPEED         ; 5              ; Untyped                ;
+; CBXI_PARAMETER         ; lpm_divide_p0p ; Untyped                ;
+; CARRY_CHAIN            ; MANUAL         ; Untyped                ;
+; OPTIMIZE_FOR_SPEED     ; 5              ; Untyped                ;
+; AUTO_CARRY_CHAINS      ; ON             ; AUTO_CARRY             ;
+; IGNORE_CARRY_BUFFERS   ; OFF            ; IGNORE_CARRY           ;
+; AUTO_CASCADE_CHAINS    ; ON             ; AUTO_CASCADE           ;
+; IGNORE_CASCADE_BUFFERS ; OFF            ; IGNORE_CASCADE         ;
++------------------------+----------------+------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++------------------------------------------------------------------+
+; Parameter Settings for Inferred Entity Instance: lpm_divide:Mod0 ;
++------------------------+----------------+------------------------+
+; Parameter Name         ; Value          ; Type                   ;
++------------------------+----------------+------------------------+
+; LPM_WIDTHN             ; 32             ; Untyped                ;
+; LPM_WIDTHD             ; 5              ; Untyped                ;
+; LPM_NREPRESENTATION    ; SIGNED         ; Untyped                ;
+; LPM_DREPRESENTATION    ; SIGNED         ; Untyped                ;
+; LPM_PIPELINE           ; 0              ; Untyped                ;
+; LPM_REMAINDERPOSITIVE  ; FALSE          ; Untyped                ;
+; MAXIMIZE_SPEED         ; 5              ; Untyped                ;
+; CBXI_PARAMETER         ; lpm_divide_soo ; Untyped                ;
+; CARRY_CHAIN            ; MANUAL         ; Untyped                ;
+; OPTIMIZE_FOR_SPEED     ; 5              ; Untyped                ;
+; AUTO_CARRY_CHAINS      ; ON             ; AUTO_CARRY             ;
+; IGNORE_CARRY_BUFFERS   ; OFF            ; IGNORE_CARRY           ;
+; AUTO_CASCADE_CHAINS    ; ON             ; AUTO_CASCADE           ;
+; IGNORE_CASCADE_BUFFERS ; OFF            ; IGNORE_CASCADE         ;
++------------------------+----------------+------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
 
 
 +-----------------------------------------------------+
@@ -247,23 +374,25 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +-----------------------+-----------------------------+
 ; Type                  ; Count                       ;
 +-----------------------+-----------------------------+
-; boundary_port         ; 44                          ;
-; cycloneiii_ff         ; 44                          ;
-;     ENA               ; 20                          ;
-;     plain             ; 24                          ;
-; cycloneiii_lcell_comb ; 80                          ;
-;     arith             ; 19                          ;
-;         2 data inputs ; 18                          ;
-;         3 data inputs ; 1                           ;
-;     normal            ; 61                          ;
-;         0 data inputs ; 1                           ;
-;         1 data inputs ; 6                           ;
-;         2 data inputs ; 3                           ;
-;         3 data inputs ; 5                           ;
-;         4 data inputs ; 46                          ;
+; boundary_port         ; 37                          ;
+; cycloneiii_ff         ; 89                          ;
+;     ENA               ; 32                          ;
+;     ENA SCLR          ; 10                          ;
+;     plain             ; 47                          ;
+; cycloneiii_lcell_comb ; 1650                        ;
+;     arith             ; 552                         ;
+;         1 data inputs ; 2                           ;
+;         2 data inputs ; 131                         ;
+;         3 data inputs ; 419                         ;
+;     normal            ; 1098                        ;
+;         0 data inputs ; 89                          ;
+;         1 data inputs ; 5                           ;
+;         2 data inputs ; 480                         ;
+;         3 data inputs ; 41                          ;
+;         4 data inputs ; 483                         ;
 ;                       ;                             ;
-; Max LUT depth         ; 8.00                        ;
-; Average LUT depth     ; 2.95                        ;
+; Max LUT depth         ; 169.40                      ;
+; Average LUT depth     ; 123.02                      ;
 +-----------------------+-----------------------------+
 
 
@@ -272,7 +401,7 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +----------------+--------------+
 ; Partition Name ; Elapsed Time ;
 +----------------+--------------+
-; Top            ; 00:00:00     ;
+; Top            ; 00:00:01     ;
 +----------------+--------------+
 
 
@@ -282,7 +411,7 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 Info: *******************************************************************
 Info: Running Quartus II 64-Bit Analysis & Synthesis
     Info: Version 14.1.0 Build 186 12/03/2014 SJ Web Edition
-    Info: Processing started: Thu May 18 10:32:52 2023
+    Info: Processing started: Thu May 18 11:46:46 2023
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off t0302 -c t0302
 Info (20030): Parallel compilation is enabled and will use 6 of the 6 processors detected
 Info (12021): Found 1 design units, including 1 entities, in source file hw18.v
@@ -323,35 +452,78 @@ Info (12021): Found 2 design units, including 1 entities, in source file hw13.vh
     Info (12023): Found entity 1: HW13
 Info (12021): Found 1 design units, including 1 entities, in source file mid.v
     Info (12023): Found entity 1: mid
-Info (12127): Elaborating entity "HW17" for the top level hierarchy
-Warning (10540): VHDL Signal Declaration warning at HW17.vhd(31): used explicit default value for signal "seg_num" because signal was never assigned a value
-Warning (10492): VHDL Process Statement warning at HW17.vhd(56): signal "clkA" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Info (12127): Elaborating entity "HW18" for the top level hierarchy
+Warning (10230): Verilog HDL assignment warning at HW18.v(35): truncated value with size 32 to match size of target (31)
+Warning (10230): Verilog HDL assignment warning at HW18.v(48): truncated value with size 32 to match size of target (4)
+Warning (10230): Verilog HDL assignment warning at HW18.v(49): truncated value with size 32 to match size of target (4)
+Warning (10230): Verilog HDL assignment warning at HW18.v(63): truncated value with size 32 to match size of target (10)
+Info (278001): Inferred 3 megafunctions from design logic
+    Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "Mod1"
+    Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "Div0"
+    Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "Mod0"
+Info (12130): Elaborated megafunction instantiation "lpm_divide:Mod1"
+Info (12133): Instantiated megafunction "lpm_divide:Mod1" with the following parameter:
+    Info (12134): Parameter "LPM_WIDTHN" = "32"
+    Info (12134): Parameter "LPM_WIDTHD" = "5"
+    Info (12134): Parameter "LPM_NREPRESENTATION" = "SIGNED"
+    Info (12134): Parameter "LPM_DREPRESENTATION" = "SIGNED"
+    Info (12134): Parameter "LPM_HINT" = "LPM_REMAINDERPOSITIVE=FALSE"
+Info (12021): Found 1 design units, including 1 entities, in source file db/lpm_divide_soo.tdf
+    Info (12023): Found entity 1: lpm_divide_soo
+Info (12021): Found 1 design units, including 1 entities, in source file db/abs_divider_kbg.tdf
+    Info (12023): Found entity 1: abs_divider_kbg
+Info (12021): Found 1 design units, including 1 entities, in source file db/alt_u_div_67f.tdf
+    Info (12023): Found entity 1: alt_u_div_67f
+Info (12021): Found 1 design units, including 1 entities, in source file db/add_sub_7pc.tdf
+    Info (12023): Found entity 1: add_sub_7pc
+Info (12021): Found 1 design units, including 1 entities, in source file db/add_sub_8pc.tdf
+    Info (12023): Found entity 1: add_sub_8pc
+Info (12021): Found 1 design units, including 1 entities, in source file db/lpm_abs_2v9.tdf
+    Info (12023): Found entity 1: lpm_abs_2v9
+Info (12021): Found 1 design units, including 1 entities, in source file db/lpm_abs_i0a.tdf
+    Info (12023): Found entity 1: lpm_abs_i0a
+Info (12130): Elaborated megafunction instantiation "lpm_divide:Div0"
+Info (12133): Instantiated megafunction "lpm_divide:Div0" with the following parameter:
+    Info (12134): Parameter "LPM_WIDTHN" = "32"
+    Info (12134): Parameter "LPM_WIDTHD" = "5"
+    Info (12134): Parameter "LPM_NREPRESENTATION" = "SIGNED"
+    Info (12134): Parameter "LPM_DREPRESENTATION" = "SIGNED"
+    Info (12134): Parameter "LPM_HINT" = "LPM_REMAINDERPOSITIVE=FALSE"
+Info (12021): Found 1 design units, including 1 entities, in source file db/lpm_divide_p0p.tdf
+    Info (12023): Found entity 1: lpm_divide_p0p
+Info (13014): Ignored 93 buffer(s)
+    Info (13016): Ignored 93 CARRY_SUM buffer(s)
 Warning (13024): Output pins are stuck at VCC or GND
     Warning (13410): Pin "BCD[0]" is stuck at VCC
     Warning (13410): Pin "BCD1[0]" is stuck at VCC
     Warning (13410): Pin "BCD2[0]" is stuck at VCC
+    Warning (13410): Pin "BCD2[1]" is stuck at GND
+    Warning (13410): Pin "BCD2[2]" is stuck at VCC
+    Warning (13410): Pin "BCD2[3]" is stuck at VCC
+    Warning (13410): Pin "BCD2[4]" is stuck at GND
+    Warning (13410): Pin "BCD2[5]" is stuck at GND
+    Warning (13410): Pin "BCD2[6]" is stuck at GND
+    Warning (13410): Pin "BCD2[7]" is stuck at GND
     Warning (13410): Pin "BCD3[0]" is stuck at VCC
+    Warning (13410): Pin "BCD3[1]" is stuck at GND
+    Warning (13410): Pin "BCD3[2]" is stuck at GND
+    Warning (13410): Pin "BCD3[3]" is stuck at VCC
+    Warning (13410): Pin "BCD3[4]" is stuck at VCC
+    Warning (13410): Pin "BCD3[5]" is stuck at GND
+    Warning (13410): Pin "BCD3[6]" is stuck at GND
+    Warning (13410): Pin "BCD3[7]" is stuck at VCC
 Info (286030): Timing-Driven Synthesis is running
-Info (17049): 15 registers lost all their fanouts during netlist optimizations.
-Info (144001): Generated suppressed messages file C:/Users/user/Desktop/design/disign/VHD/t0302.map.smsg
+Info (17049): 7 registers lost all their fanouts during netlist optimizations.
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
-Warning (21074): Design contains 1 input pin(s) that do not drive logic
-    Warning (15610): No output dependent on input pin "rst"
-Info (21057): Implemented 138 device resources after synthesis - the final resource count might be different
-    Info (21058): Implemented 12 input pins
+Info (21057): Implemented 1685 device resources after synthesis - the final resource count might be different
+    Info (21058): Implemented 5 input pins
     Info (21059): Implemented 32 output pins
-    Info (21061): Implemented 94 logic cells
-Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 9 warnings
-    Info: Peak virtual memory: 4828 megabytes
-    Info: Processing ended: Thu May 18 10:32:59 2023
-    Info: Elapsed time: 00:00:07
-    Info: Total CPU time (on all processors): 00:00:16
-
-
-+------------------------------------------+
-; Analysis & Synthesis Suppressed Messages ;
-+------------------------------------------+
-The suppressed messages can be found in C:/Users/user/Desktop/design/disign/VHD/t0302.map.smsg.
+    Info (21061): Implemented 1648 logic cells
+Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 23 warnings
+    Info: Peak virtual memory: 4845 megabytes
+    Info: Processing ended: Thu May 18 11:46:55 2023
+    Info: Elapsed time: 00:00:09
+    Info: Total CPU time (on all processors): 00:00:17
 
 
