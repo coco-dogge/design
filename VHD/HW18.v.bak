@@ -1,4 +1,4 @@
-module HW18
+module mid
 (
 	input CLK,
 	input [3:0]btn,
@@ -26,16 +26,13 @@ module HW18
 	reg [7:0]x; 
 	reg [9:0]t;
 	reg flag,flag1;
-	reg [3:0]a,b;
 	
-
+assign BCD1	<=num[a];
+assign BCD	<=num[b];
 
 	always @ (posedge CLK)
-	begin
 		q <= q + 1;
-		BCD1	= num[a];
-		BCD	= num[b];
-	end
+
 
 	always @ (posedge q[20])
 	begin
@@ -45,14 +42,14 @@ module HW18
 				4'b0010:	btnr <= 2'd2;
 				4'b0100:	btnr <= 2'd0;
 			endcase;
-			if(t <= 10'd100)
-				t <= t + 1;
-			else begin
-				flag <= 1'b0;t <= 0;end
-				
+			if(t =< 10'd100)t <= t + 1;
+		else begin
+			flag <= 1'b0;t <= 0;
+		end
+		
+		
 		a <= x / 10;
 		b <= x % 10;
-		end
 	end
 	
 	always @ (posedge q[25])
@@ -70,6 +67,7 @@ module HW18
 				2'd2:	x <= x - 1;
 			endcase;
 		end
+		else
 	end
 	
 

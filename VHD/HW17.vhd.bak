@@ -4,7 +4,7 @@ use ieee.std_logic_unsigned.all;
 use ieee.std_logic_arith.all;
 use ieee.numeric_std.all;
 
-entity HW17 is
+entity HW16 is
 	port(
 		CLK	:	in std_logic;
 		rst	:	in std_logic;
@@ -14,8 +14,8 @@ entity HW17 is
 		BCD3	:	buffer std_logic_vector(7 downto 0);
 		sw	:	in std_logic_vector(9 downto 0)
 	);
-end HW17;
-architecture X of HW17 is
+end HW16;
+architecture X of HW16 is
 
 type btn_ram is array(0 to 3)of std_logic_vector(3 downto 0);
 signal Q :btn_ram:=("0000","0000","0000","0000");
@@ -67,7 +67,7 @@ begin
 			end case;
 			Q(1 to 3) <= Q(0 to 2);
 	end if;
-	end if;
+	
 				
 	
 --end if;
