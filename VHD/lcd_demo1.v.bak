@@ -1,0 +1,109 @@
+module lcd_demo1(
+	btn,CLK,sw,
+	lcd_on,lcd_data,lcd_rs,lcd_rw,lcd_en);
+input  CLK;
+input [3:0]btn;
+input [9:0]sw;
+output [7:0] lcd_data;
+output lcd_on,lcd_rs,lcd_rw,lcd_en;
+
+
+reg [3:0] state;
+reg [7:0] mlcd_data;
+reg [14:0] cnt;
+reg  mlcd_rs;
+wire sh_clk;
+
+assign lcd_rw=1'b0;
+assign lcd_on=1'b1;
+assign lcd_data=mlcd_data;
+assign lcd_rs=mlcd_rs;
+assign lcd_en=sh_clk;
+assign rst = btn[0];
+
+reg [7:0]LCD_ram[15:0][3:0];
+
+always@(posedge CLK or negedge rst)
+begin
+	if(!rst)
+		cnt<=0;
+	else
+		cnt<=cnt+1;		
+end
+assign sh_clk=cnt[14];
+
+
+always@(posedge sh_clk or negedge rst)
+begin
+	if(!rst)
+	begin
+		mlcd_data<=0; mlcd_rs<=0;
+		state<=0;
+	end
+	else
+		case(state)
+		0:begin
+				mlcd_data<=8'h38; //8 BIT, 2 Lines, 5 * 7 Dot
+				state<=1;
+			end
+		1:begin
+				mlcd_data<=8'h0C;//Disp. ON, No Cursor, NO Blink 
+				state<=2; 
+			end
+		2:begin
+				mlcd_data<=8'h01; //Clear Display
+				state<=3;
+			end
+		3:begin
+				mlcd_data<=8'h06;//Right Shift, No disp. 
+				state<=4;
+			end
+		4:begin
+				mlcd_data<=8'h80; //Set Cursor
+				state<=5;
+			end
+		5:begin
+				mlcd_rs<=1;//Data reg.
+				mlcd_data<=8'h4C; //"L"
+				state<=6;
+			end
+		6:begin
+				mlcd_data<=8'h43; //"C"
+				state<=7;
+			end
+		7:begin
+				mlcd_data<=8'h44; //"D"	
+				state<=8;
+			end
+		8:begin
+				mlcd_rs<=0;//Control reg.
+				mlcd_data<=8'hC0; //Set Cursor
+				state<=9;
+			end
+		9:begin
+				mlcd_rs<=1;//Data reg.
+				mlcd_data<=8'h4E; //"N"
+				state<=10;
+			end
+		10:begin
+				mlcd_data<=8'h49; //"I"
+				state<=11;
+			end
+		11:begin
+				mlcd_data<=8'h43; //"C"
+				state<=12;
+			end
+		12:begin
+				mlcd_data<=8'h45; //"E"
+				state<=13;
+			end
+		13:begin
+				mlcd_rs<=0;//Control reg.
+				mlcd_data<=8'h04;//No Shift, No disp. 
+			end			
+		endcase
+end
+
+
+
+endmodule
