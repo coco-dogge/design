@@ -1,4 +1,11 @@
 
+State Machine - |lcd_demo3|string_state
+Name string_state.11 string_state.10 string_state.01 string_state.00 
+string_state.00 0 0 0 0 
+string_state.01 0 0 1 1 
+string_state.10 0 1 0 1 
+string_state.11 1 0 0 1 
+
 State Machine - |lcd_demo3|mlcd_st
 Name mlcd_st.000011 mlcd_st.000010 mlcd_st.000001 mlcd_st.000000 
 mlcd_st.000000 0 0 0 0 

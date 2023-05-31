@@ -110,6 +110,7 @@ set_global_assignment -name LL_ROOT_REGION ON -section_id "Root Region"
 set_global_assignment -name LL_MEMBER_STATE LOCKED -section_id "Root Region"
 set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_ROUTING -section_id Top
 set_global_assignment -name MISC_FILE "C:/Users/brian/Desktop/111-2/digital design/design/VHD/t0302.dpf"
+set_global_assignment -name VERILOG_FILE HW20.v
 set_global_assignment -name VERILOG_FILE lcd_controller.v
 set_global_assignment -name VERILOG_FILE ram_demo.v
 set_global_assignment -name VERILOG_FILE lcd_demo3.v

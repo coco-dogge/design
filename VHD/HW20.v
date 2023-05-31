@@ -1,4 +1,4 @@
-module lcd_demo3(btn,clk,sw,
+module HW20(btn,clk,sw,
 	lcd_on,lcd_data,lcd_rs,lcd_rw,lcd_en);
 input  clk;
 input [3:0] btn;
@@ -131,104 +131,138 @@ end
 //===========================================
 always @(posedge clk)
 begin
-integer	i;
-	case(sw[1:0])
-		2'b00:	string_state<=2'b00;
-		2'b01:	string_state<=2'b01;
-		2'b10:	string_state<=2'b10;
-		2'b11:	string_state<=2'b11;
+integer i;
+			
+	if(!rst)string_state<=2'b00;
+	else if(!btn[0])string_state<=2'b01;
+	else if(!(btn[1] || string_state == 2'b11))string_state<=2'b10;
+	else if(!(btn[2] || string_state == 2'b10))string_state<=2'b11;
+	
+	
+	
+	case(string_state)
+		2'b00:begin
+			//string_rom	<= " Welcome ALTERA ";
+			string_data[0][0]	<=	" ";
+			string_data[1][0]	<=	"W";
+			string_data[2][0]	<=	"e";
+			string_data[3][0]	<=	"l";//
+			string_data[4][0]	<=	"c";
+			string_data[5][0]	<=	"o";
+			string_data[6][0]	<=	"m";
+			string_data[7][0]	<=	"e";//
+			string_data[8][0]	<=	" ";
+			string_data[9][0]	<=	"A";
+			string_data[10][0]	<=	"L";
+			string_data[11][0]	<=	"T";//
+			string_data[12][0]	<=	"E";
+			string_data[13][0]	<=	"R";
+			string_data[14][0]	<=	"A";
+			string_data[15][0]	<=	" ";//
+			for(i=0;i<16;i=i+1)
+				string_data[i][1]	<=	8'h20;
+		end
+		2'b01:begin
+			//string_rom	<= "      1.TS      ";
+			string_data[0][0]	<=	" ";
+			string_data[1][0]	<=	" ";
+			string_data[2][0]	<=	" ";
+			string_data[3][0]	<=	" ";//
+			string_data[4][0]	<=	" ";
+			string_data[5][0]	<=	" ";
+			string_data[6][0]	<=	"1";
+			string_data[7][0]	<=	".";//
+			string_data[8][0]	<=	"T";
+			string_data[9][0]	<=	"S";
+			string_data[10][0]	<=	" ";
+			string_data[11][0]	<=	" ";//
+			string_data[12][0]	<=	" ";
+			string_data[13][0]	<=	" ";
+			string_data[14][0]	<=	" ";
+			string_data[15][0]	<=	" ";//
+			//------------------------------------
+			//string_rom	<= "      2.NS      ";
+			string_data[0][1]	<=	" ";
+			string_data[1][1]	<=	" ";
+			string_data[2][1]	<=	" ";
+			string_data[3][1]	<=	" ";//
+			string_data[4][1]	<=	" ";
+			string_data[5][1]	<=	" ";
+			string_data[6][1]	<=	"2";
+			string_data[7][1]	<=	".";//
+			string_data[8][1]	<=	"N";
+			string_data[9][1]	<=	"S";
+			string_data[10][1]	<=	" ";
+			string_data[11][1]	<=	" ";//
+			string_data[12][1]	<=	" ";
+			string_data[13][1]	<=	" ";
+			string_data[14][1]	<=	" ";
+			string_data[15][1]	<=	" ";//
+		end
+		2'b10:begin
+			//string_rom	<= "    TEAM SET    ";
+			string_data[0][0]	<=	" ";
+			string_data[1][0]	<=	" ";
+			string_data[2][0]	<=	" ";
+			string_data[3][0]	<=	" ";//
+			string_data[4][0]	<=	"T";
+			string_data[5][0]	<=	"E";
+			string_data[6][0]	<=	"A";
+			string_data[7][0]	<=	"M";//
+			string_data[8][0]	<=	" ";
+			string_data[9][0]	<=	"S";
+			string_data[10][0]	<=	"E";
+			string_data[11][0]	<=	"T";//
+			string_data[12][0]	<=	" ";
+			string_data[13][0]	<=	" ";
+			string_data[14][0]	<=	" ";
+			string_data[15][0]	<=	" ";//
+			for(i=0;i<16;i=i+1)
+				string_data[i][1]	<=	8'h20;
+		end
+		2'b11:begin
+			//string_rom	<= "   NUMBER SET   ";
+			string_data[0][0]	<=	" ";
+			string_data[1][0]	<=	" ";
+			string_data[2][0]	<=	" ";
+			string_data[3][0]	<=	"N";//
+			string_data[4][0]	<=	"U";
+			string_data[5][0]	<=	"M";
+			string_data[6][0]	<=	"B";
+			string_data[7][0]	<=	"E";//
+			string_data[8][0]	<=	"R";
+			string_data[9][0]	<=	" ";
+			string_data[10][0]	<=	"S";
+			string_data[11][0]	<=	"E";//
+			string_data[12][0]	<=	"T";
+			string_data[13][0]	<=	" ";
+			string_data[14][0]	<=	" ";
+			string_data[15][0]	<=	" ";//
+			for(i=0;i<16;i=i+1)
+				string_data[i][1]	<=	8'h20;
+		end
 	endcase
 	
-	if(rst)begin
-		case(string_state)
-			2'b00:begin
-				//string_rom	<= " altera de2-70  ";
-				string_data[0][sw[3]]	<=	" ";
-				string_data[1][sw[3]]	<=	"a";
-				string_data[2][sw[3]]	<=	"l";
-				string_data[3][sw[3]]	<=	"t";//
-				string_data[4][sw[3]]	<=	"e";
-				string_data[5][sw[3]]	<=	"r";
-				string_data[6][sw[3]]	<=	"a";
-				string_data[7][sw[3]]	<=	" ";//
-				string_data[8][sw[3]]	<=	"d";
-				string_data[9][sw[3]]	<=	"e";
-				string_data[10][sw[3]]	<=	"2";
-				string_data[11][sw[3]]	<=	"-";//
-				string_data[12][sw[3]]	<=	"7";
-				string_data[13][sw[3]]	<=	"0";
-				string_data[14][sw[3]]	<=	" ";
-				string_data[15][sw[3]]	<=	" ";//
-				for(i=0;i<16;i=i+1)
-					string_data[i][~sw[3]]	<=	8'h20;
-			end
-			2'b01:begin
-				//string_rom	<= " altera de2-70  ";
-				string_data[0][sw[3]]	<=	" ";
-				string_data[1][sw[3]]	<=	"a";
-				string_data[2][sw[3]]	<=	"l";
-				string_data[3][sw[3]]	<=	"t";//
-				string_data[4][sw[3]]	<=	"e";
-				string_data[5][sw[3]]	<=	"r";
-				string_data[6][sw[3]]	<=	"a";
-				string_data[7][sw[3]]	<=	" ";//
-				string_data[8][sw[3]]	<=	"d";
-				string_data[9][sw[3]]	<=	"e";
-				string_data[10][sw[3]]	<=	"2";
-				string_data[11][sw[3]]	<=	"-";//
-				string_data[12][sw[3]]	<=	"7";
-				string_data[13][sw[3]]	<=	"0";
-				string_data[14][sw[3]]	<=	" ";
-				string_data[15][sw[3]]	<=	" ";//
-				for(i=0;i<16;i=i+1)
-					string_data[i][~sw[3]]	<=	8'h20;
-			end
-			2'b10:begin
-				//string_rom	<= " altera de2-70  ";
-				string_data[0][sw[3]]	<=	" ";
-				string_data[1][sw[3]]	<=	"a";
-				string_data[2][sw[3]]	<=	"l";
-				string_data[3][sw[3]]	<=	"t";//
-				string_data[4][sw[3]]	<=	"e";
-				string_data[5][sw[3]]	<=	"r";
-				string_data[6][sw[3]]	<=	"a";
-				string_data[7][sw[3]]	<=	" ";//
-				string_data[8][sw[3]]	<=	"d";
-				string_data[9][sw[3]]	<=	"e";
-				string_data[10][sw[3]]	<=	"2";
-				string_data[11][sw[3]]	<=	"-";//
-				string_data[12][sw[3]]	<=	"7";
-				string_data[13][sw[3]]	<=	"0";
-				string_data[14][sw[3]]	<=	" ";
-				string_data[15][sw[3]]	<=	" ";//
-				for(i=0;i<16;i=i+1)
-					string_data[i][~sw[3]]	<=	8'h20;
-			end
-			2'b11:begin
-				//string_rom	<= " altera de2-70  ";
-				string_data[0][sw[3]]	<=	" ";
-				string_data[1][sw[3]]	<=	"a";
-				string_data[2][sw[3]]	<=	"l";
-				string_data[3][sw[3]]	<=	"t";//
-				string_data[4][sw[3]]	<=	"e";
-				string_data[5][sw[3]]	<=	"r";
-				string_data[6][sw[3]]	<=	"a";
-				string_data[7][sw[3]]	<=	" ";//
-				string_data[8][sw[3]]	<=	"d";
-				string_data[9][sw[3]]	<=	"e";
-				string_data[10][sw[3]]	<=	"2";
-				string_data[11][sw[3]]	<=	"-";//
-				string_data[12][sw[3]]	<=	"7";
-				string_data[13][sw[3]]	<=	"0";
-				string_data[14][sw[3]]	<=	" ";
-				string_data[15][sw[3]]	<=	" ";//
-				for(i=0;i<16;i=i+1)
-					string_data[i][~sw[3]]	<=	8'h20;
-			end
-		endcase
 	
-	end
 end
+//===========================================
+//string_rom	<= "      2.NS      ";
+//				string_data[0][0]	<=	" ";
+//				string_data[1][0]	<=	" ";
+//				string_data[2][0]	<=	" ";
+//				string_data[3][0]	<=	" ";//
+//				string_data[4][0]	<=	" ";
+//				string_data[5][0]	<=	" ";
+//				string_data[6][0]	<=	" ";
+//				string_data[7][0]	<=	" ";//
+//				string_data[8][0]	<=	" ";
+//				string_data[9][0]	<=	" ";
+//				string_data[10][0]	<=	" ";
+//				string_data[11][0]	<=	" ";//
+//				string_data[12][0]	<=	" ";
+//				string_data[13][0]	<=	" ";
+//				string_data[14][0]	<=	" ";
+//				string_data[15][0]	<=	" ";//
 //===========================================
 lcd_controller 		u0	(	//	host side
 							.idata(mlcd_data),
