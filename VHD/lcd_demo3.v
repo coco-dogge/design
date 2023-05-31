@@ -16,7 +16,10 @@ reg			mlcd_rs;
 wire		mlcd_done;
 wire		rst;
 //===========================
-
+reg [16*8:1]	string_rom;
+reg [7:0]	string_data[15:0][1:0];
+reg [1:0]	string_state;
+//===========================
 
 assign rst = btn[0];
 
@@ -86,45 +89,89 @@ begin
 	lcd_intial+3:	lut_data	<=	9'h006;
 	lcd_intial+4:	lut_data	<=	9'h080;
 	//	line 1
-	lcd_line1+0:	lut_data	<=	9'h120;	//	welcome to the
-	lcd_line1+1:	lut_data	<=	9'h157;
-	lcd_line1+2:	lut_data	<=	9'h165;
-	lcd_line1+3:	lut_data	<=	9'h16c;
-	lcd_line1+4:	lut_data	<=	9'h163;
-	lcd_line1+5:	lut_data	<=	9'h16f;
-	lcd_line1+6:	lut_data	<=	9'h16d;
-	lcd_line1+7:	lut_data	<=	9'h165;
-	lcd_line1+8:	lut_data	<=	9'h120;
-	lcd_line1+9:	lut_data	<=	9'h174;
-	lcd_line1+10:	lut_data	<=	9'h16f;
-	lcd_line1+11:	lut_data	<=	9'h120;
-	lcd_line1+12:	lut_data	<=	9'h174;
-	lcd_line1+13:	lut_data	<=	9'h168;
-	lcd_line1+14:	lut_data	<=	9'h165;
-	lcd_line1+15:	lut_data	<=	9'h120;
+	lcd_line1+0:	lut_data	<=	{1'b1,string_data[0] [0]};	//	welcome to the
+	lcd_line1+1:	lut_data	<=	{1'b1,string_data[1] [0]};
+	lcd_line1+2:	lut_data	<=	{1'b1,string_data[2] [0]};
+	lcd_line1+3:	lut_data	<=	{1'b1,string_data[3] [0]};
+	lcd_line1+4:	lut_data	<=	{1'b1,string_data[4] [0]};
+	lcd_line1+5:	lut_data	<=	{1'b1,string_data[5] [0]};
+	lcd_line1+6:	lut_data	<=	{1'b1,string_data[6] [0]};
+	lcd_line1+7:	lut_data	<=	{1'b1,string_data[7] [0]};
+	lcd_line1+8:	lut_data	<=	{1'b1,string_data[8] [0]};
+	lcd_line1+9:	lut_data	<=	{1'b1,string_data[9] [0]};
+	lcd_line1+10:	lut_data	<=	{1'b1,string_data[10][0]};
+	lcd_line1+11:	lut_data	<=	{1'b1,string_data[11][0]};
+	lcd_line1+12:	lut_data	<=	{1'b1,string_data[12][0]};
+	lcd_line1+13:	lut_data	<=	{1'b1,string_data[13][0]};
+	lcd_line1+14:	lut_data	<=	{1'b1,string_data[14][0]};
+	lcd_line1+15:	lut_data	<=	{1'b1,string_data[15][0]};
 	//	change line
 	lcd_ch_line:	lut_data	<=	9'h0c0;
 	//	line 2
-	lcd_line2+0:	lut_data	<=	9'h120;	//	altera de2-70
-	lcd_line2+1:	lut_data	<=	9'h141;	
-	lcd_line2+2:	lut_data	<=	9'h16c;
-	lcd_line2+3:	lut_data	<=	9'h174;
-	lcd_line2+4:	lut_data	<=	9'h165;
-	lcd_line2+5:	lut_data	<=	9'h172;
-	lcd_line2+6:	lut_data	<=	9'h161;
-	lcd_line2+7:	lut_data	<=	9'h120;
-	lcd_line2+8:	lut_data	<=	9'h144;
-	lcd_line2+9:	lut_data	<=	9'h145;
-	lcd_line2+10:	lut_data	<=	9'h132;
-	lcd_line2+11:	lut_data	<=	9'h1b0;
-	lcd_line2+12:	lut_data	<=	9'h131;
-	lcd_line2+13:	lut_data	<=	9'h131;
-	lcd_line2+14:	lut_data	<=	9'h135;
-	lcd_line2+15:	lut_data	<=	9'h120;
+	lcd_line2+0:	lut_data	<=	{1'b1,string_data[0] [1]};	//	altera de2-70
+	lcd_line2+1:	lut_data	<=	{1'b1,string_data[1] [1]};	
+	lcd_line2+2:	lut_data	<=	{1'b1,string_data[2] [1]};
+	lcd_line2+3:	lut_data	<=	{1'b1,string_data[3] [1]};
+	lcd_line2+4:	lut_data	<=	{1'b1,string_data[4] [1]};
+	lcd_line2+5:	lut_data	<=	{1'b1,string_data[5] [1]};
+	lcd_line2+6:	lut_data	<=	{1'b1,string_data[6] [1]};
+	lcd_line2+7:	lut_data	<=	{1'b1,string_data[7] [1]};
+	lcd_line2+8:	lut_data	<=	{1'b1,string_data[8] [1]};
+	lcd_line2+9:	lut_data	<=	{1'b1,string_data[9] [1]};
+	lcd_line2+10:	lut_data	<=	{1'b1,string_data[10][1]};
+	lcd_line2+11:	lut_data	<=	{1'b1,string_data[11][1]};
+	lcd_line2+12:	lut_data	<=	{1'b1,string_data[12][1]};
+	lcd_line2+13:	lut_data	<=	{1'b1,string_data[13][1]};
+	lcd_line2+14:	lut_data	<=	{1'b1,string_data[14][1]};
+	lcd_line2+15:	lut_data	<=	{1'b1,string_data[15][1]};
 	default:		lut_data	<=	9'h120;
 	endcase
 end
-
+//===========================================
+always @(posedge clk)
+begin
+	case(sw[1:0])
+		2'b00:	string_state<=2'b00;
+		2'b01:	string_state<=2'b01;
+		2'b10:	string_state<=2'b10;
+		2'b11:	string_state<=2'b11;
+	endcase
+	
+	if(rst)begin
+		case(string_state)
+			2'b00:begin
+				string_rom	<= " altera de2-70  ";
+				for(i=0;i<15;i=i+1)begin
+					string_data[i][sw[3]]	<=	string_rom[i*8+8:i*8+1];
+					string_data[i][~sw[3]]	<=	8'h20;
+				end
+			end
+			2'b01:begin
+				string_rom	<= " altera de3-70  ";
+				for(i=0;i<15;i=i+1)begin
+					string_data[i][sw[3]]	<=	string_rom[i*8+8:i*8+1];
+					string_data[i][~sw[3]]	<=	8'h20;
+				end
+			end
+			2'b10:begin
+				string_rom	<= " altera de4-70  ";
+				for(i=0;i<15;i=i+1)begin
+					string_data[i][sw[3]]	<=	string_rom[i*8+8:i*8+1];
+					string_data[i][~sw[3]]	<=	8'h20;
+				end
+			end
+			2'b11:begin
+				string_rom	<= " altera de5-70  ";
+				for(i=0;i<15;i=i+1)begin
+					string_data[i][sw[3]]	<=	string_rom[i*8+8:i*8+1];
+					string_data[i][~sw[3]]	<=	8'h20;
+				end
+			end
+		endcase
+	
+	end
+end
+//===========================================
 lcd_controller 		u0	(	//	host side
 							.idata(mlcd_data),
 							.irs(mlcd_rs),
