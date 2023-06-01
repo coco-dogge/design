@@ -1,5 +1,5 @@
 Flow report for t0302
-Thu Jun 01 09:57:04 2023
+Thu Jun 01 10:26:30 2023
 Quartus II 64-Bit Version 14.1.0 Build 186 12/03/2014 SJ Web Edition
 
 
@@ -41,17 +41,17 @@ agreement for further details.
 +---------------------------------------------------------------------------------+
 ; Flow Summary                                                                    ;
 +------------------------------------+--------------------------------------------+
-; Flow Status                        ; Successful - Thu Jun 01 09:57:04 2023      ;
+; Flow Status                        ; Successful - Thu Jun 01 10:26:30 2023      ;
 ; Quartus II 64-Bit Version          ; 14.1.0 Build 186 12/03/2014 SJ Web Edition ;
 ; Revision Name                      ; t0302                                      ;
 ; Top-level Entity Name              ; HW20                                       ;
 ; Family                             ; Cyclone IV E                               ;
 ; Device                             ; EP4CE115F29C7                              ;
 ; Timing Models                      ; Final                                      ;
-; Total logic elements               ; 139 / 114,480 ( < 1 % )                    ;
-;     Total combinational functions  ; 139 / 114,480 ( < 1 % )                    ;
-;     Dedicated logic registers      ; 60 / 114,480 ( < 1 % )                     ;
-; Total registers                    ; 60                                         ;
+; Total logic elements               ; 166 / 114,480 ( < 1 % )                    ;
+;     Total combinational functions  ; 164 / 114,480 ( < 1 % )                    ;
+;     Dedicated logic registers      ; 63 / 114,480 ( < 1 % )                     ;
+; Total registers                    ; 63                                         ;
 ; Total pins                         ; 21 / 529 ( 4 % )                           ;
 ; Total virtual pins                 ; 0                                          ;
 ; Total memory bits                  ; 0 / 3,981,312 ( 0 % )                      ;
@@ -65,7 +65,7 @@ agreement for further details.
 +-------------------+---------------------+
 ; Option            ; Setting             ;
 +-------------------+---------------------+
-; Start date & time ; 06/01/2023 09:56:31 ;
+; Start date & time ; 06/01/2023 10:25:57 ;
 ; Main task         ; Compilation         ;
 ; Revision Name     ; t0302               ;
 +-------------------+---------------------+
@@ -76,7 +76,7 @@ agreement for further details.
 +-------------------------------------+---------------------------------------+---------------+-------------+----------------+
 ; Assignment Name                     ; Value                                 ; Default Value ; Entity Name ; Section Id     ;
 +-------------------------------------+---------------------------------------+---------------+-------------+----------------+
-; COMPILER_SIGNATURE_ID               ; 154946512632179.168558459102364       ; --            ; --          ; --             ;
+; COMPILER_SIGNATURE_ID               ; 154946512632179.168558635705640       ; --            ; --          ; --             ;
 ; EDA_OUTPUT_DATA_FORMAT              ; Vhdl                                  ; --            ; --          ; eda_simulation ;
 ; EDA_SIMULATION_TOOL                 ; ModelSim-Altera (VHDL)                ; <None>        ; --          ; --             ;
 ; MAX_CORE_JUNCTION_TEMP              ; 85                                    ; --            ; --          ; --             ;
@@ -97,12 +97,12 @@ agreement for further details.
 +---------------------------+--------------+-------------------------+---------------------+------------------------------------+
 ; Module Name               ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
 +---------------------------+--------------+-------------------------+---------------------+------------------------------------+
-; Analysis & Synthesis      ; 00:00:08     ; 1.0                     ; 4842 MB             ; 00:00:16                           ;
-; Fitter                    ; 00:00:13     ; 1.4                     ; 5895 MB             ; 00:00:19                           ;
-; Assembler                 ; 00:00:03     ; 1.0                     ; 4709 MB             ; 00:00:03                           ;
+; Analysis & Synthesis      ; 00:00:08     ; 1.0                     ; 4834 MB             ; 00:00:17                           ;
+; Fitter                    ; 00:00:12     ; 1.8                     ; 5894 MB             ; 00:00:19                           ;
+; Assembler                 ; 00:00:03     ; 1.0                     ; 4711 MB             ; 00:00:03                           ;
 ; TimeQuest Timing Analyzer ; 00:00:01     ; 1.0                     ; 4912 MB             ; 00:00:02                           ;
 ; EDA Netlist Writer        ; 00:00:01     ; 1.0                     ; 4682 MB             ; 00:00:01                           ;
-; Total                     ; 00:00:26     ; --                      ; --                  ; 00:00:41                           ;
+; Total                     ; 00:00:25     ; --                      ; --                  ; 00:00:42                           ;
 +---------------------------+--------------+-------------------------+---------------------+------------------------------------+
 
 

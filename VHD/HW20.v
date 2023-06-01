@@ -22,7 +22,7 @@ reg [1:0]	string_state;
 
 //===========================
 
-assign rst = btn[0];
+assign rst = btn[0] & btn[1] & btn[2] & btn[3];
 
 localparam	
 	lcd_intial	=	0,
@@ -132,27 +132,20 @@ end
 always @(posedge CLK)
 begin
 integer i;
-			
-	if(!rst)string_state<=2'b00;
-	else if(!btn[0])string_state<=2'b01;
-	else if(!(btn[1] || string_state == 2'b11))string_state<=2'b10;
-	else if(!(btn[2] || string_state == 2'b10))string_state<=2'b11;
-	
-	
-	
+
 	case(string_state)
 		2'b00:begin
 			//string_rom	<= " Welcome ALTERA ";
-			string_data[0][0]	<=	" ";
-			string_data[1][0]	<=	"W";
-			string_data[2][0]	<=	"e";
-			string_data[3][0]	<=	"l";//
-			string_data[4][0]	<=	"c";
-			string_data[5][0]	<=	"o";
-			string_data[6][0]	<=	"m";
-			string_data[7][0]	<=	"e";//
-			string_data[8][0]	<=	" ";
-			string_data[9][0]	<=	"A";
+			string_data[0][0]		<=	" ";
+			string_data[1][0]		<=	"W";
+			string_data[2][0]		<=	"e";
+			string_data[3][0]		<=	"l";//
+			string_data[4][0]		<=	"c";
+			string_data[5][0]		<=	"o";
+			string_data[6][0]		<=	"m";
+			string_data[7][0]		<=	"e";//
+			string_data[8][0]		<=	" ";
+			string_data[9][0]		<=	"A";
 			string_data[10][0]	<=	"L";
 			string_data[11][0]	<=	"T";//
 			string_data[12][0]	<=	"E";
@@ -164,16 +157,16 @@ integer i;
 		end
 		2'b01:begin
 			//string_rom	<= "      1.TS      ";
-			string_data[0][0]	<=	" ";
-			string_data[1][0]	<=	" ";
-			string_data[2][0]	<=	" ";
-			string_data[3][0]	<=	" ";//
-			string_data[4][0]	<=	" ";
-			string_data[5][0]	<=	" ";
-			string_data[6][0]	<=	"1";
-			string_data[7][0]	<=	".";//
-			string_data[8][0]	<=	"T";
-			string_data[9][0]	<=	"S";
+			string_data[0][0]		<=	" ";
+			string_data[1][0]		<=	" ";
+			string_data[2][0]		<=	" ";
+			string_data[3][0]		<=	" ";//
+			string_data[4][0]		<=	" ";
+			string_data[5][0]		<=	" ";
+			string_data[6][0]		<=	"1";
+			string_data[7][0]		<=	".";//
+			string_data[8][0]		<=	"T";
+			string_data[9][0]		<=	"S";
 			string_data[10][0]	<=	" ";
 			string_data[11][0]	<=	" ";//
 			string_data[12][0]	<=	" ";
@@ -182,16 +175,16 @@ integer i;
 			string_data[15][0]	<=	" ";//
 			//------------------------------------
 			//string_rom	<= "      2.NS      ";
-			string_data[0][1]	<=	" ";
-			string_data[1][1]	<=	" ";
-			string_data[2][1]	<=	" ";
-			string_data[3][1]	<=	" ";//
-			string_data[4][1]	<=	" ";
-			string_data[5][1]	<=	" ";
-			string_data[6][1]	<=	"2";
-			string_data[7][1]	<=	".";//
-			string_data[8][1]	<=	"N";
-			string_data[9][1]	<=	"S";
+			string_data[0][1]		<=	" ";
+			string_data[1][1]		<=	" ";
+			string_data[2][1]		<=	" ";
+			string_data[3][1]		<=	" ";//
+			string_data[4][1]		<=	" ";
+			string_data[5][1]		<=	" ";
+			string_data[6][1]		<=	"2";
+			string_data[7][1]		<=	".";//
+			string_data[8][1]		<=	"N";
+			string_data[9][1]		<=	"S";
 			string_data[10][1]	<=	" ";
 			string_data[11][1]	<=	" ";//
 			string_data[12][1]	<=	" ";
@@ -201,16 +194,16 @@ integer i;
 		end
 		2'b10:begin
 			//string_rom	<= "    TEAM SET    ";
-			string_data[0][0]	<=	" ";
-			string_data[1][0]	<=	" ";
-			string_data[2][0]	<=	" ";
-			string_data[3][0]	<=	" ";//
-			string_data[4][0]	<=	"T";
-			string_data[5][0]	<=	"E";
-			string_data[6][0]	<=	"A";
-			string_data[7][0]	<=	"M";//
-			string_data[8][0]	<=	" ";
-			string_data[9][0]	<=	"S";
+			string_data[0][0]		<=	" ";
+			string_data[1][0]		<=	" ";
+			string_data[2][0]		<=	" ";
+			string_data[3][0]		<=	" ";//
+			string_data[4][0]		<=	"T";
+			string_data[5][0]		<=	"E";
+			string_data[6][0]		<=	"A";
+			string_data[7][0]		<=	"M";//
+			string_data[8][0]		<=	" ";
+			string_data[9][0]		<=	"S";
 			string_data[10][0]	<=	"E";
 			string_data[11][0]	<=	"T";//
 			string_data[12][0]	<=	" ";
@@ -222,16 +215,16 @@ integer i;
 		end
 		2'b11:begin
 			//string_rom	<= "   NUMBER SET   ";
-			string_data[0][0]	<=	" ";
-			string_data[1][0]	<=	" ";
-			string_data[2][0]	<=	" ";
-			string_data[3][0]	<=	"N";//
-			string_data[4][0]	<=	"U";
-			string_data[5][0]	<=	"M";
-			string_data[6][0]	<=	"B";
-			string_data[7][0]	<=	"E";//
-			string_data[8][0]	<=	"R";
-			string_data[9][0]	<=	" ";
+			string_data[0][0]		<=	" ";
+			string_data[1][0]		<=	" ";
+			string_data[2][0]		<=	" ";
+			string_data[3][0]		<=	"N";//
+			string_data[4][0]		<=	"U";
+			string_data[5][0]		<=	"M";
+			string_data[6][0]		<=	"B";
+			string_data[7][0]		<=	"E";//
+			string_data[8][0]		<=	"R";
+			string_data[9][0]		<=	" ";
 			string_data[10][0]	<=	"S";
 			string_data[11][0]	<=	"E";//
 			string_data[12][0]	<=	"T";
@@ -243,6 +236,16 @@ integer i;
 		end
 	endcase
 	
+	
+end
+
+always @(posedge CLK)
+begin
+				
+	if(!btn[3])string_state<=2'b00;
+	else if(!btn[0])string_state<=2'b01;
+	else if(!((btn[1] == 1'b1) || (string_state == 2'b11)))string_state<=2'b10;
+	else if(!((btn[2] == 1'b1) || (string_state == 2'b10)))string_state<=2'b11;
 	
 end
 //===========================================
