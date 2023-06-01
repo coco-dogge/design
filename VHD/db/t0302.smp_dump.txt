@@ -1,19 +1,12 @@
 
-State Machine - |HW20|string_state
-Name string_state.11 string_state.10 string_state.01 string_state.00 
-string_state.00 0 0 0 0 
-string_state.01 0 0 1 1 
-string_state.10 0 1 0 1 
-string_state.11 1 0 0 1 
-
-State Machine - |HW20|mlcd_st
+State Machine - |HW21|mlcd_st
 Name mlcd_st.000011 mlcd_st.000010 mlcd_st.000001 mlcd_st.000000 
 mlcd_st.000000 0 0 0 0 
 mlcd_st.000001 0 0 1 1 
 mlcd_st.000010 0 1 0 1 
 mlcd_st.000011 1 0 0 1 
 
-State Machine - |HW20|lcd_controller:u0|state
+State Machine - |HW21|lcd_controller:u0|state
 Name state.11 state.10 state.01 state.00 
 state.00 0 0 0 0 
 state.01 0 0 1 1 
