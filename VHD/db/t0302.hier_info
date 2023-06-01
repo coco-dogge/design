@@ -1,29 +1,28 @@
-|lcd_demo3
+|HW20
 btn[0] => rst.IN1
-btn[1] => ~NO_FANOUT~
-btn[2] => ~NO_FANOUT~
+btn[1] => always2.IN0
+btn[2] => always2.IN0
 btn[3] => ~NO_FANOUT~
-clk => clk.IN1
-sw[0] => Decoder1.IN1
-sw[1] => Decoder1.IN0
+CLK => CLK.IN1
+sw[0] => ~NO_FANOUT~
+sw[1] => ~NO_FANOUT~
 sw[2] => ~NO_FANOUT~
-sw[3] => Decoder2.IN0
-sw[3] => Decoder3.IN0
-lcd_on <= <VCC>
-lcd_data[0] <= lcd_controller:u0.lcd_data
-lcd_data[1] <= lcd_controller:u0.lcd_data
-lcd_data[2] <= lcd_controller:u0.lcd_data
-lcd_data[3] <= lcd_controller:u0.lcd_data
-lcd_data[4] <= lcd_controller:u0.lcd_data
-lcd_data[5] <= lcd_controller:u0.lcd_data
-lcd_data[6] <= lcd_controller:u0.lcd_data
-lcd_data[7] <= lcd_controller:u0.lcd_data
-lcd_rs <= lcd_controller:u0.lcd_rs
-lcd_rw <= lcd_controller:u0.lcd_rw
-lcd_en <= lcd_controller:u0.lcd_en
+sw[3] => ~NO_FANOUT~
+lcd_on << <VCC>
+lcd_data[0] << lcd_controller:u0.lcd_data
+lcd_data[1] << lcd_controller:u0.lcd_data
+lcd_data[2] << lcd_controller:u0.lcd_data
+lcd_data[3] << lcd_controller:u0.lcd_data
+lcd_data[4] << lcd_controller:u0.lcd_data
+lcd_data[5] << lcd_controller:u0.lcd_data
+lcd_data[6] << lcd_controller:u0.lcd_data
+lcd_data[7] << lcd_controller:u0.lcd_data
+lcd_rs << lcd_controller:u0.lcd_rs
+lcd_rw << lcd_controller:u0.lcd_rw
+lcd_en << lcd_controller:u0.lcd_en
 
 
-|lcd_demo3|lcd_controller:u0
+|HW20|lcd_controller:u0
 idata[0] => lcd_data[0].DATAIN
 idata[1] => lcd_data[1].DATAIN
 idata[2] => lcd_data[2].DATAIN

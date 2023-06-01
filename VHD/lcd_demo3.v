@@ -1,6 +1,6 @@
-module lcd_demo3(btn,clk,sw,
+module lcd_demo3(btn,CLK,sw,
 	lcd_on,lcd_data,lcd_rs,lcd_rw,lcd_en);
-input  clk;
+input  CLK;
 input [3:0] btn;
 input [3:0]sw;
 output [7:0] lcd_data;
@@ -33,13 +33,13 @@ localparam
 
 assign lcd_on=1'b1;
 	
-always@(posedge clk or negedge rst)
+always@(posedge CLK or negedge rst)
 begin
 	if(!rst)
 	begin
 		lut_index	<=	0;
 		mlcd_st		<=	0;
-		mdly		<=	0;
+		mdly			<=	0;
 		mlcd_start	<=	0;
 		mlcd_data	<=	0;
 		mlcd_rs		<=	0;
@@ -90,7 +90,7 @@ begin
 	lcd_intial+3:	lut_data	<=	9'h006;
 	lcd_intial+4:	lut_data	<=	9'h080;
 	//	line 1
-	lcd_line1+0:	lut_data	<=	{1'b1,string_data[0] [0]};	//	welcome to the
+	lcd_line1+0:	lut_data	<=	{1'b1,string_data[0] [0]};	//	line1
 	lcd_line1+1:	lut_data	<=	{1'b1,string_data[1] [0]};
 	lcd_line1+2:	lut_data	<=	{1'b1,string_data[2] [0]};
 	lcd_line1+3:	lut_data	<=	{1'b1,string_data[3] [0]};
@@ -109,7 +109,7 @@ begin
 	//	change line
 	lcd_ch_line:	lut_data	<=	9'h0c0;
 	//	line 2
-	lcd_line2+0:	lut_data	<=	{1'b1,string_data[0] [1]};	//	altera de2-70
+	lcd_line2+0:	lut_data	<=	{1'b1,string_data[0] [1]};	//	line2
 	lcd_line2+1:	lut_data	<=	{1'b1,string_data[1] [1]};	
 	lcd_line2+2:	lut_data	<=	{1'b1,string_data[2] [1]};
 	lcd_line2+3:	lut_data	<=	{1'b1,string_data[3] [1]};
@@ -129,7 +129,7 @@ begin
 	endcase
 end
 //===========================================
-always @(posedge clk)
+always @(posedge CLK)
 begin
 integer	i;
 	case(sw[1:0])
@@ -142,6 +142,27 @@ integer	i;
 	if(rst)begin
 		case(string_state)
 			2'b00:begin
+				//string_rom	<= " altera de2-70  ";
+				string_data[0][sw[3]]	<=	" ";
+				string_data[1][sw[3]]	<=	"W";
+				string_data[2][sw[3]]	<=	"e";
+				string_data[3][sw[3]]	<=	"l";//
+				string_data[4][sw[3]]	<=	"c";
+				string_data[5][sw[3]]	<=	"o";
+				string_data[6][sw[3]]	<=	"m";
+				string_data[7][sw[3]]	<=	"e";//
+				string_data[8][sw[3]]	<=	" ";
+				string_data[9][sw[3]]	<=	"t";
+				string_data[10][sw[3]]	<=	"o";
+				string_data[11][sw[3]]	<=	" ";//
+				string_data[12][sw[3]]	<=	"t";
+				string_data[13][sw[3]]	<=	"h";
+				string_data[14][sw[3]]	<=	"e";
+				string_data[15][sw[3]]	<=	" ";//
+				//for(i=0;i<16;i=i+1)
+				//	string_data[i][~sw[3]]	<=	8'h20;
+			end
+			2'b01:begin
 				//string_rom	<= " altera de2-70  ";
 				string_data[0][sw[3]]	<=	" ";
 				string_data[1][sw[3]]	<=	"a";
@@ -159,71 +180,50 @@ integer	i;
 				string_data[13][sw[3]]	<=	"0";
 				string_data[14][sw[3]]	<=	" ";
 				string_data[15][sw[3]]	<=	" ";//
-				for(i=0;i<16;i=i+1)
-					string_data[i][~sw[3]]	<=	8'h20;
-			end
-			2'b01:begin
-				//string_rom	<= " altera de2-70  ";
-				string_data[0][sw[3]]	<=	" ";
-				string_data[1][sw[3]]	<=	"a";
-				string_data[2][sw[3]]	<=	"l";
-				string_data[3][sw[3]]	<=	"t";//
-				string_data[4][sw[3]]	<=	"e";
-				string_data[5][sw[3]]	<=	"r";
-				string_data[6][sw[3]]	<=	"a";
-				string_data[7][sw[3]]	<=	" ";//
-				string_data[8][sw[3]]	<=	"d";
-				string_data[9][sw[3]]	<=	"e";
-				string_data[10][sw[3]]	<=	"2";
-				string_data[11][sw[3]]	<=	"-";//
-				string_data[12][sw[3]]	<=	"7";
-				string_data[13][sw[3]]	<=	"0";
-				string_data[14][sw[3]]	<=	" ";
-				string_data[15][sw[3]]	<=	" ";//
-				for(i=0;i<16;i=i+1)
-					string_data[i][~sw[3]]	<=	8'h20;
+				//for(i=0;i<16;i=i+1)
+				//	string_data[i][~sw[3]]	<=	8'h20;
 			end
 			2'b10:begin
 				//string_rom	<= " altera de2-70  ";
 				string_data[0][sw[3]]	<=	" ";
-				string_data[1][sw[3]]	<=	"a";
-				string_data[2][sw[3]]	<=	"l";
+				string_data[1][sw[3]]	<=	"N";
+				string_data[2][sw[3]]	<=	"a";
 				string_data[3][sw[3]]	<=	"t";//
-				string_data[4][sw[3]]	<=	"e";
-				string_data[5][sw[3]]	<=	"r";
-				string_data[6][sw[3]]	<=	"a";
-				string_data[7][sw[3]]	<=	" ";//
-				string_data[8][sw[3]]	<=	"d";
-				string_data[9][sw[3]]	<=	"e";
-				string_data[10][sw[3]]	<=	"3";
-				string_data[11][sw[3]]	<=	"-";//
-				string_data[12][sw[3]]	<=	"7";
-				string_data[13][sw[3]]	<=	"0";
-				string_data[14][sw[3]]	<=	" ";
-				string_data[15][sw[3]]	<=	" ";//
-				for(i=0;i<16;i=i+1)
-					string_data[i][~sw[3]]	<=	8'h20;
+				string_data[4][sw[3]]	<=	"i";
+				string_data[5][sw[3]]	<=	"o";
+				string_data[6][sw[3]]	<=	"n";
+				string_data[7][sw[3]]	<=	"a";//
+				string_data[8][sw[3]]	<=	"l";
+				string_data[9][sw[3]]	<=	" ";
+				string_data[10][sw[3]]	<=	"T";
+				string_data[11][sw[3]]	<=	"a";//
+				string_data[12][sw[3]]	<=	"i";
+				string_data[13][sw[3]]	<=	"p";
+				string_data[14][sw[3]]	<=	"e";
+				string_data[15][sw[3]]	<=	"i";//
+				//for(i=0;i<16;i=i+1)
+				//	string_data[i][~sw[3]]	<=	8'h20;
 			end
 			2'b11:begin
 				//string_rom	<= " altera de2-70  ";
 				string_data[0][sw[3]]	<=	" ";
-				string_data[1][sw[3]]	<=	"a";
-				string_data[2][sw[3]]	<=	"l";
-				string_data[3][sw[3]]	<=	"t";//
-				string_data[4][sw[3]]	<=	"e";
-				string_data[5][sw[3]]	<=	"r";
-				string_data[6][sw[3]]	<=	"a";
-				string_data[7][sw[3]]	<=	" ";//
-				string_data[8][sw[3]]	<=	"d";
-				string_data[9][sw[3]]	<=	"e";
-				string_data[10][sw[3]]	<=	"4";
-				string_data[11][sw[3]]	<=	"-";//
-				string_data[12][sw[3]]	<=	"7";
-				string_data[13][sw[3]]	<=	"0";
-				string_data[14][sw[3]]	<=	" ";
-				string_data[15][sw[3]]	<=	" ";//
-				for(i=0;i<16;i=i+1)
-					string_data[i][~sw[3]]	<=	8'h20;
+				string_data[1][sw[3]]	<=	"S";
+				string_data[2][sw[3]]	<=	"T";
+				string_data[3][sw[3]]	<=	" ";//
+				string_data[4][sw[3]]	<=	"N";
+				string_data[5][sw[3]]	<=	"O";
+				string_data[6][sw[3]]	<=	":";
+				string_data[7][sw[3]]	<=	"1";//
+				string_data[8][sw[3]]	<=	"0";
+				string_data[9][sw[3]]	<=	"9";
+				string_data[10][sw[3]]	<=	"3";
+				string_data[11][sw[3]]	<=	"6";//
+				string_data[12][sw[3]]	<=	"0";
+				string_data[13][sw[3]]	<=	"1";
+				string_data[14][sw[3]]	<=	"0";
+				string_data[15][sw[3]]	<=	"1";//
+				//for(i=0;i<16;i=i+1)
+				//	string_data[i][~sw[3]]	<=	8'h20;
 			end
 		endcase
 	
@@ -235,7 +235,7 @@ lcd_controller 		u0	(	//	host side
 							.irs(mlcd_rs),
 							.istart(mlcd_start),
 							.odone(mlcd_done),
-							.iclk(clk),
+							.iclk(CLK),
 							.irst_n(rst),
 							//	lcd interface
 							.lcd_data(lcd_data),

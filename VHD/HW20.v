@@ -1,6 +1,6 @@
-module HW20(btn,clk,sw,
+module HW20(btn,CLK,sw,
 	lcd_on,lcd_data,lcd_rs,lcd_rw,lcd_en);
-input  clk;
+input  CLK;
 input [3:0] btn;
 input [3:0]sw;
 output [7:0] lcd_data;
@@ -33,7 +33,7 @@ localparam
 
 assign lcd_on=1'b1;
 	
-always@(posedge clk or negedge rst)
+always@(posedge CLK or negedge rst)
 begin
 	if(!rst)
 	begin
@@ -129,7 +129,7 @@ begin
 	endcase
 end
 //===========================================
-always @(posedge clk)
+always @(posedge CLK)
 begin
 integer i;
 			
@@ -269,7 +269,7 @@ lcd_controller 		u0	(	//	host side
 							.irs(mlcd_rs),
 							.istart(mlcd_start),
 							.odone(mlcd_done),
-							.iclk(clk),
+							.iclk(CLK),
 							.irst_n(rst),
 							//	lcd interface
 							.lcd_data(lcd_data),
